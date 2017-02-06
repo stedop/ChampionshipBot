@@ -1,0 +1,8 @@
+# [](#pt-NOS) {{=it.standings.leagueCaption}} - Fixtures
+
+Date | Home | Away
+---|---------|---------
+{{ for (var pos in it.fixtures) { }}|    {{=it.fixtures[pos].date}} | [](#{{=it.fixtures[pos].homeTeamStyle}}) {{=it.fixtures[pos].homeTeamName}} | [](#{{=it.fixtures[pos].awayTeamStyle}}) {{=it.fixtures[pos].awayTeamName}} |
+{{ } }}
+
+******

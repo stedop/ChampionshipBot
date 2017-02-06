@@ -1,0 +1,8 @@
+# Championship Table
+
+| Pos.   | Team | Played  | GD   | Points    |
+|:------:|------|:-------:|:-----:|:--------: |
+{{ for (var pos in it.standings.standing) { }}|    {{=it.standings.standing[pos].position }} | [{{=it.standings.standing[pos].teamName }}({{=it.standings.standing[pos].subreddit }}) |  {{=it.standings.standing[pos].playedGames }} |  {{=it.standings.standing[pos].goalDifference }}  |  {{=it.standings.standing[pos].points }} |
+{{ } }}
+
+******

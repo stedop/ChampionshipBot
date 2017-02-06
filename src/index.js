@@ -1,0 +1,49 @@
+"use strict";
+
+import bot from "./bot";
+import env from "node-env-file";
+import winston from "winston";
+import { each } from "lodash";
+
+env( ".env" );
+
+const logger = new (winston.Logger)( {
+    transports: [
+        new (winston.transports.Console)(),
+        new (winston.transports.File)( {
+            filename: "./logs/" + process.env.logFile,
+            handleExceptions: true,
+            humanReadableUnhandledException: true
+        } )
+    ]
+} );
+
+const botConfig = {
+    'userAgent': process.env.userAgent,
+    'clientId': process.env.clientId,
+    'clientSecret': process.env.clientSecret,
+    'refreshToken': process.env.refreshToken,
+    'subreddit': process.env.subreddit,
+    'apiKey': process.env.apiKey,
+    'leagueId': process.env.leagueId,
+};
+
+const plBot = new bot( botConfig );
+
+
+plBot
+    .getData()
+    .then( () => {
+        try {
+            plBot.doTable().updateSidebar();
+            logger.log('complete', plBot.data.completed);
+            console.log(plBot.data.standings);
+        } catch (error) {
+            logger.log('error', error);
+        }
+    } )
+    .catch(
+        (error) => {
+            logger.log('error', error);
+        }
+    );
