@@ -246,7 +246,7 @@ class bot {
 
         // add the team badges
         (0, _each3.default)(this.data.standings.standing, function (entry) {
-            update(self.data.standings.standing, { 'teamName': entry.teamName }, { 'subbreddit': _teamcodes2.default[entry.subbreddit] });
+            update(self.data.standings.standing, { 'teamName': entry.teamName }, { 'subreddit': _teamcodes2.default[entry.teamName].sub });
         });
 
         this.data.sidebar = this.__replaceText({
@@ -320,6 +320,7 @@ class bot {
     }
 }
 exports.default = bot;
+//# sourceMappingURL=bot.js.map
 //# sourceMappingURL=bot.js.map
 //# sourceMappingURL=bot.js.map
 //# sourceMappingURL=bot.js.map

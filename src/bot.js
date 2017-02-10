@@ -216,7 +216,7 @@ export default class bot {
             update(
                 self.data.standings.standing,
                 { 'teamName': entry.teamName },
-                { 'subbreddit' : TeamCodes[entry.subbreddit] }
+                { 'subreddit' : TeamCodes[entry.teamName].sub }
             );
         });
 
